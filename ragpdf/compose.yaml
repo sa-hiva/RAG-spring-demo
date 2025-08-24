@@ -1,0 +1,14 @@
+services:
+  pgvector:
+    image: pgvector/pgvector:pg16
+    environment:
+      - POSTGRES_DB=ragpdf
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    labels:
+      - "org.springframework.boot.service-connection=postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
